@@ -43,3 +43,7 @@ ADD PRIMARY KEY (id);
 ALTER TABLE reorder_options
 ADD FOREIGN KEY (part_id) REFERENCES parts (id);
 
+-- step 10 
+ALTER TABLE locations 
+ADD CHECK (qty > 0); 
+
