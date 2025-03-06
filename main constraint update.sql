@@ -18,3 +18,7 @@ where description is null;
 -- step 4 
 alter table parts 
 alter column description set not null;
+
+-- step 5
+INSERT INTO parts (id, description, code, manufacturer_id) 
+VALUES (54, 'Full-color LED SMD modules', 'V1-009', 9);
