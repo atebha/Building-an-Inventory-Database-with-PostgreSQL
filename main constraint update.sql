@@ -4,11 +4,14 @@ SELECT *
 FROM parts 
 LIMIT 10;
 
--- Set a unique value and no nulls for parts
+-- Set a unique value, no nulls, primary key, foreign key for parts and inserts/updates into parts
 -- step 2
 ALTER TABLE parts
-ALTER COLUMN code SET NOT NULL
-ADD UNIQUE(code);
+ALTER COLUMN code SET NOT NULL,
+ALTER COLUMN description SET NOT NULL,
+ADD UNIQUE(code),
+ADD PRIMARY KEY (id),
+ADD FOREIGN KEY (manufacturer_id) REFERENCES manufacturers (id);
 
 -- step 3
 UPDATE parts
@@ -16,8 +19,9 @@ SET description = 'none available'
 WHERE description IS NULL;
 
 -- step 4 
-ALTER TABLE parts 
-alter column description SET NOT NULL;
+UPDATE parts
+SET manufacturer_id = 11
+WHERE manufacturer_id IN (1, 2);
 
 -- step 5
 INSERT INTO parts (id, description, code, manufacturer_id) 
@@ -37,9 +41,6 @@ ALTER TABLE reorder_options
 ADD CHECK (price_usd/quantity > 0.02 AND price_usd/quantity < 25.00);
 
 -- step 9
-ALTER TABLE parts
-ADD PRIMARY KEY (id);
-
 ALTER TABLE reorder_options
 ADD FOREIGN KEY (part_id) REFERENCES parts (id);
 
@@ -56,14 +57,9 @@ ALTER TABLE locations
 ADD FOREIGN KEY (part_id) REFERENCES parts (id);
 
 -- step 13
-ALTER TABLE parts
-ADD FOREIGN KEY (manufacturer_id) REFERENCES manufacturers (id);
 
 -- step 14
 INSERT INTO manufacturers(name, id) 
 VALUES ('Pip-NNC Industrial', 11);
 
 -- step 15
-UPDATE parts
-SET manufacturer_id = 11
-WHERE manufacturer_id IN (1, 2);
