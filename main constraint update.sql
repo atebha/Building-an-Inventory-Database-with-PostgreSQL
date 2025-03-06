@@ -9,3 +9,8 @@ ALTER COLUMN code SET not null;
 
 ALTER TABLE parts
 ADD UNIQUE(code);
+
+-- step 3
+update parts
+set description = 'none available'
+where description is null;
