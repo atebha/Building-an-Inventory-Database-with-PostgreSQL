@@ -1,13 +1,13 @@
+-- Query the data from the parts table
 -- step1
 SELECT * 
 FROM parts 
 LIMIT 10;
 
+-- Set a unique value and no nulls for parts
 -- step 2
 ALTER TABLE parts
-ALTER COLUMN code SET NOT NULL;
-
-ALTER TABLE parts
+ALTER COLUMN code SET NOT NULL
 ADD UNIQUE(code);
 
 -- step 3
