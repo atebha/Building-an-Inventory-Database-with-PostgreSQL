@@ -14,3 +14,7 @@ ADD UNIQUE(code);
 update parts
 set description = 'none available'
 where description is null;
+
+-- step 4 
+alter table parts 
+alter column description set not null;
