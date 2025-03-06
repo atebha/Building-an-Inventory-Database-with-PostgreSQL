@@ -51,3 +51,7 @@ ADD CHECK (qty > 0);
 ALTER TABLE locations
 ADD UNIQUE (part_id, location);
 
+-- step 12
+ALTER TABLE locations
+ADD FOREIGN KEY (part_id) REFERENCES parts (id);
+
