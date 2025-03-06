@@ -55,3 +55,7 @@ ADD UNIQUE (part_id, location);
 ALTER TABLE locations
 ADD FOREIGN KEY (part_id) REFERENCES parts (id);
 
+-- step 13
+ALTER TABLE parts
+ADD FOREIGN KEY (manufacturer_id) REFERENCES manufacturers (id);
+
