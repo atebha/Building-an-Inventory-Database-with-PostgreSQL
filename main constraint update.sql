@@ -21,7 +21,7 @@ alter column description set not null;
 
 -- step 5
 INSERT INTO parts (id, description, code, manufacturer_id) 
-VALUES (54, 'Full-color LED SMD modules', 'V1-009', 9);
+VALUES (54, '', 'V1-009', 9);
 
 -- step 6
 ALTER TABLE reorder_options
@@ -63,3 +63,7 @@ ADD FOREIGN KEY (manufacturer_id) REFERENCES manufacturers (id);
 INSERT INTO manufacturers(name, id) 
 VALUES ('Pip-NNC Industrial', 11);
 
+-- step 15
+UPDATE parts
+SET manufacturer_id = 11
+WHERE manufacturer_id IN (1, 2);
