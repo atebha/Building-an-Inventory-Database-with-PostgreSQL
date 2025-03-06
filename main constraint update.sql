@@ -1,23 +1,23 @@
 -- step1
-select * 
-from parts 
-limit 10;
+SELECT * 
+FROM parts 
+LIMIT 10;
 
 -- step 2
 ALTER TABLE parts
-ALTER COLUMN code SET not null;
+ALTER COLUMN code SET NOT NULL;
 
 ALTER TABLE parts
 ADD UNIQUE(code);
 
 -- step 3
-update parts
-set description = 'none available'
-where description is null;
+UPDATE parts
+SET description = 'none available'
+WHERE description IS NULL;
 
 -- step 4 
-alter table parts 
-alter column description set not null;
+ALTER TABLE parts 
+alter column description SET NOT NULL;
 
 -- step 5
 INSERT INTO parts (id, description, code, manufacturer_id) 
