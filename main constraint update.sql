@@ -22,3 +22,9 @@ alter column description set not null;
 -- step 5
 INSERT INTO parts (id, description, code, manufacturer_id) 
 VALUES (54, 'Full-color LED SMD modules', 'V1-009', 9);
+
+-- step 6
+ALTER TABLE reorder_options
+ALTER COLUMN price_usd SET NOT NULL,
+ALTER COLUMN quantity SET NOT NULL;
+
