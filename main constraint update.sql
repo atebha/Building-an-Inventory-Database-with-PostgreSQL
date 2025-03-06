@@ -28,3 +28,7 @@ ALTER TABLE reorder_options
 ALTER COLUMN price_usd SET NOT NULL,
 ALTER COLUMN quantity SET NOT NULL;
 
+-- step 7
+ALTER TABLE reorder_options
+ADD CHECK (price_usd > 0 AND quantity > 0);
+
