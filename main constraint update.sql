@@ -30,18 +30,9 @@ VALUES (54, '', 'V1-009', 9);
 -- step 6
 ALTER TABLE reorder_options
 ALTER COLUMN price_usd SET NOT NULL,
-ALTER COLUMN quantity SET NOT NULL;
-
--- step 7
-ALTER TABLE reorder_options
-ADD CHECK (price_usd > 0 AND quantity > 0);
-
--- step 8
-ALTER TABLE reorder_options
-ADD CHECK (price_usd/quantity > 0.02 AND price_usd/quantity < 25.00);
-
--- step 9
-ALTER TABLE reorder_options
+ALTER COLUMN quantity SET NOT NULL,
+ADD CHECK (price_usd > 0 AND quantity > 0),
+ADD CHECK (price_usd/quantity > 0.02 AND price_usd/quantity < 25.00),
 ADD FOREIGN KEY (part_id) REFERENCES parts (id);
 
 -- step 10 
