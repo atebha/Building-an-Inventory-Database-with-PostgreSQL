@@ -43,9 +43,7 @@ ADD CHECK (qty > 0),
 ADD UNIQUE (part_id, location),
 ADD FOREIGN KEY (part_id) REFERENCES parts (id);
 
-
--- step 14
+-- Insert into manufacturers table
+-- step 8
 INSERT INTO manufacturers(name, id) 
 VALUES ('Pip-NNC Industrial', 11);
-
--- step 15
